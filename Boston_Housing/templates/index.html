@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Boston House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 450px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0 14px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .result {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Boston House Price Prediction</h2>
+
+    <form action="/predict" method="post">
+
+        <label>CRIM (Crime Rate)</label>
+        <input type="number" step="any" name="CRIM" required>
+
+        <label>ZN (Residential Land Zone)</label>
+        <input type="number" step="any" name="ZN" required>
+
+        <label>INDUS (Industrial Area)</label>
+        <input type="number" step="any" name="INDUS" required>
+
+        <label>CHAS (Charles River: 0 or 1)</label>
+        <input type="number" step="any" name="CHAS" required>
+
+        <label>NOX (Nitric Oxides)</label>
+        <input type="number" step="any" name="NOX" required>
+
+        <label>RM (Avg Rooms)</label>
+        <input type="number" step="any" name="RM" required>
+
+        <label>AGE (Old Houses %)</label>
+        <input type="number" step="any" name="AGE" required>
+
+        <label>DIS (Distance to Employment)</label>
+        <input type="number" step="any" name="DIS" required>
+
+        <label>RAD (Highway Access)</label>
+        <input type="number" step="any" name="RAD" required>
+
+        <label>TAX (Property Tax)</label>
+        <input type="number" step="any" name="TAX" required>
+
+        <label>PTRATIO (Pupil-Teacher Ratio)</label>
+        <input type="number" step="any" name="PTRATIO" required>
+
+        <label>B (Black Population Index)</label>
+        <input type="number" step="any" name="B" required>
+
+        <label>LSTAT (% Lower Status)</label>
+        <input type="number" step="any" name="LSTAT" required>
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
